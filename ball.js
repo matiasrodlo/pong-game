@@ -1,6 +1,7 @@
-const INITIAL_VELOCITY = 0.25;
+const INITIAL_VELOCITY = 0.025;
+const VELOCITY_INCREASE = 0.00001;
 
-export default class ball {
+export default class Ball {
   constructor(ballElem) {
     this.ballElem = ballElem;
     this.reset();
@@ -10,14 +11,18 @@ export default class ball {
   }
 
   set x(value) {
-    this.ballElem.style.setProperty("--y", value);
+    this.ballElem.style.setProperty("--x", value);
   }
   get y() {
-    return parseFloat(getComputedStyle(this.ballElem).getPropertyValue("--x"));
+    return parseFloat(getComputedStyle(this.ballElem).getPropertyValue("--y"));
   }
 
   set y(value) {
     this.ballElem.style.setProperty("--y", value);
+  }
+
+  rect() {
+    return this.ballElem.getBoundingClientRect();
   }
 
   reset() {
@@ -40,6 +45,16 @@ export default class ball {
   update(delta) {
     this.x += this.direction.x * this.velocity * delta;
     this.y += this.direction.y * this.velocity * delta;
+    this.velocity += VELOCITY_INCREASE * delta;
+    const rect = this.rect();
+
+    if (rect.bottom >= window.innerHeight || rect.top <= 0) {
+      this.direction.y *= -1;
+    }
+
+    if (rect.right >= window.innerHeight || rect.left <= 0) {
+      this.direction.x *= -1;
+    }
   }
 }
 
