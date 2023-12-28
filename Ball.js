@@ -6,6 +6,7 @@ export default class Ball {
     this.ballElem = ballElem;
     this.reset();
   }
+
   get x() {
     return parseFloat(getComputedStyle(this.ballElem).getPropertyValue("--x"));
   }
@@ -13,6 +14,7 @@ export default class Ball {
   set x(value) {
     this.ballElem.style.setProperty("--x", value);
   }
+
   get y() {
     return parseFloat(getComputedStyle(this.ballElem).getPropertyValue("--y"));
   }
@@ -34,10 +36,7 @@ export default class Ball {
       Math.abs(this.direction.x) >= 0.9
     ) {
       const heading = randomNumberBetween(0, 2 * Math.PI);
-      this.direction = {
-        x: Math.cos(heading),
-        y: Math.sin(heading),
-      };
+      this.direction = { x: Math.cos(heading), y: Math.sin(heading) };
     }
     this.velocity = INITIAL_VELOCITY;
   }

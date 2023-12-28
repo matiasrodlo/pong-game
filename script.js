@@ -1,5 +1,5 @@
-import Ball from "./ball.js";
-import Paddle from "./paddle.js";
+import Ball from "./Ball.js";
+import Paddle from "./Paddle.js";
 
 const ball = new Ball(document.getElementById("ball"));
 const playerPaddle = new Paddle(document.getElementById("player-paddle"));
@@ -16,7 +16,9 @@ function update(time) {
     const hue = parseFloat(
       getComputedStyle(document.documentElement).getPropertyValue("--hue")
     );
-    document.documentElement.style.setProperty("--hue", hue + delta + 0.01);
+
+    document.documentElement.style.setProperty("--hue", hue + delta * 0.01);
+
     if (isLose()) handleLose();
   }
 

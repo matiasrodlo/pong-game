@@ -17,7 +17,7 @@ export default class Paddle {
   }
 
   rect() {
-    return this.paddleElem.getBoundingClientRects();
+    return this.paddleElem.getBoundingClientRect();
   }
 
   reset() {
