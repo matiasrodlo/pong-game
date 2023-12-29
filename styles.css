@@ -1,9 +1,11 @@
+/* Global Box Sizing */
 *,
 *::after,
 *::before {
   box-sizing: border-box;
 }
 
+/* Root Variables */
 :root {
   --hue: 200;
   --saturation: 50%;
@@ -11,12 +13,14 @@
   --background-color: hsl(var(--hue), var(--saturation), 20%);
 }
 
+/* Body Styles */
 body {
   margin: 0;
   background-color: var(--background-color);
-  overflow: hidden;
+  overflow: hidden; /* Hides the horizontal scrollbar */
 }
 
+/* Paddle Styles */
 .paddle {
   --position: 50;
 
@@ -36,6 +40,7 @@ body {
   right: 1vw;
 }
 
+/* Ball Styles */
 .ball {
   --x: 50;
   --y: 50;
@@ -50,6 +55,7 @@ body {
   height: 2.5vh;
 }
 
+/* Score Styles */
 .score {
   display: flex;
   justify-content: center;
@@ -58,6 +64,7 @@ body {
   color: var(--foreground-color);
 }
 
+/* Individual Score Elements */
 .score > * {
   flex-grow: 1;
   flex-basis: 0;
@@ -66,6 +73,7 @@ body {
   opacity: 0.5;
 }
 
+/* Styling the First Child Element */
 .score > :first-child {
   text-align: right;
   border-right: 0.5vh solid var(--foreground-color);
